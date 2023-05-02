@@ -66,7 +66,7 @@ const Header = () => {
             </div>
           </a>
         ) : (
-          <LoginButton />
+          <LoginButton>Login</LoginButton>
         )}
       </div>
       <Tooltip anchorSelect=".show-user-name" place="left">
