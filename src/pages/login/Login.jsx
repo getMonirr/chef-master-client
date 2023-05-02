@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SocialLogin from "../../components/SocialLogin";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
@@ -6,26 +6,50 @@ import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 const Login = () => {
-  const { googleLogin, user, githubLogin } = useAuth();
+  const [error, setError] = useState("");
+  const { googleLogin, user, githubLogin, loginWithEmailAndPassword } =
+    useAuth();
+
   // handle google log in
   const handleGoogleLogin = () => {
+    setError("");
     googleLogin()
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
       });
   };
 
   // handle git hub login
   const handleGitHubLogin = () => {
+    setError("");
     githubLogin()
       .then((result) => {
         console.log(result.user);
       })
       .catch((err) => {
+        setError(err.message);
+      });
+  };
+
+  // handle email and password login
+  const handlePasswordLogin = (e) => {
+    e.preventDefault();
+    setError("");
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    loginWithEmailAndPassword(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => {
+        setError(err.message);
         console.log(err);
       });
   };
@@ -37,6 +61,9 @@ const Login = () => {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Welcome back
             </h1>
+            <p className="text-base font-bold leading-tight tracking-tight text-red-500 md:text-md dark:text-white">
+              {error}
+            </p>
             <div className="flex gap-2">
               <SocialLogin
                 handleClick={handleGoogleLogin}
@@ -56,7 +83,10 @@ const Login = () => {
               <div className="">or</div>
               <div className="h-[2px] bg-slate-600 w-full"></div>
             </div>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form
+              onSubmit={handlePasswordLogin}
+              className="space-y-4 md:space-y-6"
+            >
               <div>
                 <label
                   htmlFor="email"
