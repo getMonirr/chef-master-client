@@ -4,9 +4,13 @@ import LoginButton from "../../components/LoginButton";
 import { TbChefHat } from "react-icons/tb";
 import { AuthContext } from "../../context/AuthProvider";
 import { Tooltip } from "react-tooltip";
+import { useAuth } from "../../hooks/useAuth";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut();
+  };
   return (
     <div className="navbar bg-base-100 container mx-auto">
       <div className="navbar-start">
@@ -57,14 +61,17 @@ const Header = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <a className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
-              <img
-                className={`${user?.displayName && "show-user-name"}`}
-                src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
-            </div>
-          </a>
+          <>
+            <a className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img
+                  className={`${user?.displayName && "show-user-name"}`}
+                  src="/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
+              </div>
+            </a>
+            <LoginButton handleClick={handleLogOut}>Sign Out</LoginButton>
+          </>
         ) : (
           <LoginButton>Login</LoginButton>
         )}
