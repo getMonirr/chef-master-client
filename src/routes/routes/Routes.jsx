@@ -4,7 +4,11 @@ import Blog from "../../pages/blog/Blog";
 import Home from "../../pages/home/Home";
 import Login from "../../pages/login/Login";
 import Registration from "../../pages/registration/Registration";
-import { chefsDataLoader } from "../../loader/chefsDataLoader";
+import {
+  chefsDataLoader,
+  targetChefLoader,
+} from "../../loader/chefsDataLoader";
+import ChefRecipes from "../../pages/ChefRecipes/ChefRecipes";
 
 export const routes = createBrowserRouter([
   {
@@ -27,6 +31,11 @@ export const routes = createBrowserRouter([
       {
         path: "sign-up",
         element: <Registration />,
+      },
+      {
+        path: "chef/:chef_id",
+        element: <ChefRecipes />,
+        loader: targetChefLoader,
       },
     ],
   },

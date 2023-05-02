@@ -10,8 +10,11 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <div className="py-28 container mx-auto">
-        <h2 className="my-20 font-bold text-4xl text-center">Our Chefs</h2>
+      <div className="pb-20 container mx-auto">
+        <div className="my-20 text-center space-y-3">
+          <h2 className="font-bold text-4xl underline-offset-4 underline decoration-orange-400">Our Chefs</h2>
+          <p>Lorem ipsum dolor sit amet consectetur.</p>
+        </div>
         <div className="grid grid-cols-3 gap-8">
           {chefs.map((c) => (
             <SingleChef key={c.id} chef={c} />
