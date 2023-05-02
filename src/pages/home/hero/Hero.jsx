@@ -5,7 +5,7 @@ import heroImage from "../../../assets/imageBase.png";
 const Hero = () => {
   return (
     <div
-      className="min-h-screen"
+      className="min-h-[calc(100vh-300px)]"
       style={{
         backgroundImage: `url(${heroBg})`,
         backgroundPosition: "center center",
@@ -13,7 +13,7 @@ const Hero = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex justify-between items-center min-h-screen container mx-auto px-5 py-10 gap-4 flex-col lg:flex-row flex-col-reverse">
+      <div className="flex justify-between items-center min-h-[calc(100vh-300px)] container mx-auto px-5 py-10 gap-4 lg:flex-row flex-col-reverse">
         <div>
           <div className="lg:w-3/6 text-center lg:text-left">
             <h1 className="mb-5 text-5xl font-bold text-white">Hello there</h1>
@@ -22,7 +22,9 @@ const Hero = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-primary bg-orange-400 border-orange-300">Get Started</button>
+            <button className="btn btn-primary bg-orange-400 border-orange-300">
+              Get Started
+            </button>
           </div>
         </div>
         <div className="mb-8">

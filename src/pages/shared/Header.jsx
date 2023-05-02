@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import LoginButton from "../../components/LoginButton";
 import { TbChefHat } from "react-icons/tb";
-import { AuthContext } from "../../context/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
