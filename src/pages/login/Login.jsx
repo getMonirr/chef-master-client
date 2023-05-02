@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -17,6 +18,7 @@ const Login = () => {
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
+        toast.success("login successful");
       })
       .catch((err) => {
         setError(err.message);
@@ -29,6 +31,7 @@ const Login = () => {
     githubLogin()
       .then((result) => {
         console.log(result.user);
+        toast.success("login successful");
       })
       .catch((err) => {
         setError(err.message);
@@ -47,6 +50,7 @@ const Login = () => {
     loginWithEmailAndPassword(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success("login successful");
       })
       .catch((err) => {
         setError(err.message);

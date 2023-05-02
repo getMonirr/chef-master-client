@@ -5,11 +5,19 @@ import { TbChefHat } from "react-icons/tb";
 import { AuthContext } from "../../context/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import { useAuth } from "../../hooks/useAuth";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const { user, logOut } = useAuth();
   const handleLogOut = () => {
-    logOut();
+    logOut()
+    .then(result => {
+      toast.success("logout successful");
+    })
+    .then(err => {
+      console.log(err);
+      toast.error(err?.message);
+    })
   };
   return (
     <div className="navbar bg-base-100 container mx-auto">
@@ -62,11 +70,14 @@ const Header = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <a className="btn btn-ghost btn-circle avatar">
+            <a className="btn btn-ghost btn-circle avatar mr-4">
               <div className="w-10 rounded-full">
                 <img
                   className={`${user?.displayName && "show-user-name"}`}
-                  src={user?.photoURL || "/images/stock/photo-1534528741775-53994a69daeb.jpg"}
+                  src={
+                    user?.photoURL ||
+                    "/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  }
                 />
               </div>
             </a>

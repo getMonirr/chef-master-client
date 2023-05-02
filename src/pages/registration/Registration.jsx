@@ -52,7 +52,7 @@ const Registration = () => {
                   htmlFor="name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your name
+                  Your name (optional)
                 </label>
                 <input
                   type="name"
@@ -67,7 +67,7 @@ const Registration = () => {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Your email
+                  Your email<sup className="text-red-500">*</sup>
                 </label>
                 <input
                   type="email"
@@ -83,7 +83,7 @@ const Registration = () => {
                   htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Password
+                  Password<sup className="text-red-500">*</sup>
                 </label>
                 <input
                   type="password"
@@ -99,7 +99,7 @@ const Registration = () => {
                   htmlFor="photo url"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Photo url
+                  Photo url (optional)
                 </label>
                 <input
                   type="text"
