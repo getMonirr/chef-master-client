@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
+import { toast } from "react-toastify";
 
 const SingleRecipe = ({ recipe }) => {
+  const [favBtnDisable, setFavBtnDisable] = useState(false);
   const { recipe_name, ingredients, rating, cooking_method } = recipe;
+
+  // handle add to favorite
+  const handleAddToFavorite = () => {
+    toast.success("Successfully add To favorite");
+    setFavBtnDisable(true);
+  };
   return (
     <div className="card w-full bg-slate-600 shadow-xl text-white">
       <div className="card-body space-y-6">
@@ -34,7 +42,11 @@ const SingleRecipe = ({ recipe }) => {
           </div>
         </div>
         <div className="card-actions justify-end">
-          <button className="btn bg-orange-400 border border-orange-300">
+          <button
+            onClick={handleAddToFavorite}
+            className="btn bg-orange-400 border border-orange-300"
+            disabled={favBtnDisable}
+          >
             Add To Favorite
           </button>
         </div>
