@@ -40,7 +40,7 @@ const Header = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          <TbChefHat />
+          <TbChefHat color={"red"} />
           <span className="text-red-400 mr-2 ml-2">Chef</span>{" "}
           <span className="text-orange-500">Master</span>
         </Link>

@@ -12,7 +12,7 @@ const Main = () => {
       <div>
         <Outlet />
       </div>
-      <div>
+      <div className="bg-base-200 mx-auto">
         <Footer />
       </div>
     </div>
