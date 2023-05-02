@@ -6,13 +6,24 @@ import { Link, Navigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 const Login = () => {
-  const { googleLogin,user } = useAuth();
+  const { googleLogin, user, githubLogin } = useAuth();
   // handle google log in
   const handleGoogleLogin = () => {
     googleLogin()
       .then((result) => {
         const loggedInUser = result.user;
         console.log(loggedInUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  // handle git hub login
+  const handleGitHubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        console.log(result.user);
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +44,10 @@ const Login = () => {
               >
                 Log in with google
               </SocialLogin>
-              <SocialLogin icon={<FaGithub size={15} />}>
+              <SocialLogin
+                handleClick={handleGitHubLogin}
+                icon={<FaGithub size={15} />}
+              >
                 Log in with google
               </SocialLogin>
             </div>
