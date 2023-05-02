@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import LoginButton from "../../components/LoginButton";
+import { TbChefHat } from "react-icons/tb";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Header = () => {
-  const user = null;
+  const {user} = useContext(AuthContext)
   return (
     <div className="navbar bg-base-100 container mx-auto">
       <div className="navbar-start">
@@ -37,7 +39,8 @@ const Header = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          Chef Master
+          <TbChefHat />
+          <span className="text-red-400 mr-2 ml-2">Chef</span> <span className="text-orange-500">Master</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
