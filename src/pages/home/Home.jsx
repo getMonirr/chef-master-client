@@ -3,6 +3,7 @@ import Hero from "./hero/Hero";
 import { useLoaderData, useNavigation } from "react-router-dom";
 import SingleChef from "../../components/SingleChef";
 import { Dna } from "react-loader-spinner";
+import HowItWork from "../../components/HowItWork";
 
 const Home = () => {
   // get data
@@ -13,6 +14,14 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <div
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, rgba(255, 206, 103, 0.22) -42.47%, rgba(253, 237, 202, 0) 100%)",
+        }}
+      >
+        <HowItWork />
+      </div>
       <div className="pb-20 container mx-auto">
         <div className="my-20 text-center space-y-3">
           <h2 className="font-bold text-4xl underline-offset-4 underline decoration-orange-400">
@@ -32,7 +41,7 @@ const Home = () => {
             />
           </div>
         ) : (
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 px-5">
             {chefs.map((c) => (
               <SingleChef key={c.id} chef={c} />
             ))}
