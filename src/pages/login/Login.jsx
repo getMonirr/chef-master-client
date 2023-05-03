@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SocialLogin from "../../components/SocialLogin";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 
@@ -15,6 +15,12 @@ const Login = () => {
   const location = useLocation();
   const from = location?.state?.from?.pathname;
   // console.log(location,from);
+
+  const navigate = useNavigate();
+
+  const handleSingUpNavigate = () => {
+    navigate("/sign-up", { state: { location } });
+  };
 
   // handle google log in
   const handleGoogleLogin = () => {
@@ -136,12 +142,12 @@ const Login = () => {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
-                <Link
-                  to="/sign-up"
-                  className="font-medium text-red-400 hover:underline dark:text-primary-500"
+                <span
+                  onClick={handleSingUpNavigate}
+                  className="font-medium text-red-400 hover:underline dark:text-primary-500 cursor-pointer"
                 >
                   Sign up
-                </Link>
+                </span>
               </p>
               {user && <Navigate to={from || "/"} replace={true} />}
             </form>

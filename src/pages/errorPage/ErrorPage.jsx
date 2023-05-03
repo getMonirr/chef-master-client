@@ -4,12 +4,7 @@ import errorImage from "../../assets/404.png";
 
 const ErrorPage = () => {
   const err = useRouteError();
-  const {
-    error: { message },
-    status,
-    statusText,
-  } = err;
-
+  const { error, status, statusText } = err;
   return (
     <section className="bg-orange-200 dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 flex h-screen justify-center items-center">
@@ -21,7 +16,7 @@ const ErrorPage = () => {
             {statusText || "Something's missing."}
           </p>
           <p className="mb-4 text-lg font-light text-gray-500 dark:text-gray-400">
-            {message ||
+            {error?.message ||
               "Sorry, we can't find that page. You'll find lots to explore on the home page."}
           </p>
           <Link

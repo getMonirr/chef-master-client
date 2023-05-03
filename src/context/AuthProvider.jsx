@@ -8,6 +8,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
@@ -56,6 +57,11 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+  // set user name and photo url
+  const setUserNameAndPhotoUrl = (userObj) => {
+    return updateProfile(auth, userObj);
+  };
+
   // auth info
   const authInfo = {
     user,
@@ -65,6 +71,8 @@ const AuthProvider = ({ children }) => {
     createNewUser,
     loginWithEmailAndPassword,
     logOut,
+    setUserNameAndPhotoUrl,
+    setUser,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

@@ -28,7 +28,10 @@ const Home = () => {
           <h2 className="font-bold text-4xl underline-offset-4 underline decoration-orange-400">
             Our Chefs
           </h2>
-          <p>Lorem ipsum dolor sit amet consectetur.</p>
+          <p>
+            Here is our most Chines Chef. All chef most popular for their
+            recipe. <br /> Just explore
+          </p>
         </div>
         {navigation.state === "loading" ? (
           <div className="mx-auto text-center container w-96">
@@ -49,9 +52,9 @@ const Home = () => {
           </div>
         )}
       </div>
-        <div>
-          <InstallApp />
-        </div>
+      <div>
+        <InstallApp />
+      </div>
     </>
   );
 };

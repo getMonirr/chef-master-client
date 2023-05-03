@@ -1,13 +1,19 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
   const [error, setError] = useState("");
-  const { createNewUser } = useAuth();
+  const { createNewUser, user, setUser } = useAuth();
+
+  const location = useLocation();
+  const from = location?.state?.location?.state?.from?.pathname || "/";
+
+  // update name and photo url
 
   // handle handleFormSubmit
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
@@ -21,16 +27,33 @@ const Registration = () => {
       setError("Password must be 6 char long");
       return;
     }
+
     if (password && email) {
-      createNewUser(email, password)
+      const loggedUser = await createNewUser(email, password)
         .then((result) => {
           console.log(result.user);
+          return result.user;
+        })
+        .catch((err) => {
+          setError(err.message);
+        });
+
+      await updateProfile(loggedUser, {
+        displayName: name,
+        photoURL: photoUrl,
+      })
+        .then(() => {
+          console.log("Profile updated successfully");
+          setUser(loggedUser);
+          // for update header user image and name. without it i cannot update header without reload
+          window.location.reload(true);
         })
         .catch((err) => {
           setError(err.message);
         });
     }
   };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -123,6 +146,7 @@ const Registration = () => {
                 </Link>
               </p>
             </form>
+            {user && <Navigate to={from} replace />}
           </div>
         </div>
       </div>
