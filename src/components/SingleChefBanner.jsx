@@ -2,6 +2,7 @@ import React from "react";
 import { TbChefHat } from "react-icons/tb";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { AiOutlineLike } from "react-icons/ai";
+import LazyLoad from "react-lazy-load";
 
 const SingleChefBanner = ({ chef }) => {
   const {
@@ -24,7 +25,9 @@ const SingleChefBanner = ({ chef }) => {
       </div>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="w-6/12">
-          <img src={chef_picture} alt={chef_name} />
+          <LazyLoad>
+            <img src={chef_picture} alt={chef_name} />
+          </LazyLoad>
         </figure>
         <div className="card-body justify-start w-6/12">
           <h2 className="card-title font-bolder text-3xl mb-6">{chef_name}</h2>

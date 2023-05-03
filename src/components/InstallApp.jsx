@@ -3,6 +3,7 @@ import appDownload from "../assets/AppDownload.svg";
 import { HiReceiptPercent } from "react-icons/hi2";
 import { IoLocationSharp } from "react-icons/io5";
 import { RxLapTimer } from "react-icons/rx";
+import LazyLoad from "react-lazy-load";
 
 const InstallApp = () => {
   return (
@@ -32,7 +33,9 @@ const InstallApp = () => {
         </div>
       </div>
       <div>
-        <img src={appDownload} alt="app download" />
+        <LazyLoad height={762} offset={300}>
+          <img src={appDownload} alt="app download" />
+        </LazyLoad>
       </div>
     </>
   );
