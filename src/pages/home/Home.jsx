@@ -4,6 +4,7 @@ import { useLoaderData, useNavigation } from "react-router-dom";
 import SingleChef from "../../components/SingleChef";
 import { Dna } from "react-loader-spinner";
 import HowItWork from "../../components/HowItWork";
+import InstallApp from "../../components/InstallApp";
 
 const Home = () => {
   // get data
@@ -48,6 +49,9 @@ const Home = () => {
           </div>
         )}
       </div>
+        <div>
+          <InstallApp />
+        </div>
     </>
   );
 };
