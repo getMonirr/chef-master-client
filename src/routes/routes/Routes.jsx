@@ -9,11 +9,13 @@ import {
   targetChefLoader,
 } from "../../loader/chefsDataLoader";
 import ChefRecipes from "../../pages/ChefRecipes/ChefRecipes";
+import ErrorPage from "../../pages/errorPage/ErrorPage";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
