@@ -1,5 +1,5 @@
 import React from "react";
-import appDownload from "../assets/AppDownload.svg";
+import appDownload from "../assets/AppDownload.png";
 import { HiReceiptPercent } from "react-icons/hi2";
 import { IoLocationSharp } from "react-icons/io5";
 import { RxLapTimer } from "react-icons/rx";

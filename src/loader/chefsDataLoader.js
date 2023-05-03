@@ -1,10 +1,10 @@
 export const chefsDataLoader = async () => {
-    const res = await fetch('http://localhost:5000/chefs');
+    const res = await fetch('https://chef-master-server-getmonirr.vercel.app/chefs');
     return await res.json()
 }
 
 // targetChefLoader
 export const targetChefLoader = async ({ params }) => {
-    const res = await fetch(`http://localhost:5000/chef/${params.chef_id}`);
+    const res = await fetch(`https://chef-master-server-getmonirr.vercel.app/chef/${params.chef_id}`);
     return await res.json();
 }
