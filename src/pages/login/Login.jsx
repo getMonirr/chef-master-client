@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SocialLogin from "../../components/SocialLogin";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 
@@ -10,6 +10,11 @@ const Login = () => {
   const [error, setError] = useState("");
   const { googleLogin, user, githubLogin, loginWithEmailAndPassword } =
     useAuth();
+
+  // location
+  const location = useLocation();
+  const from = location?.state?.from?.pathname;
+  // console.log(location,from);
 
   // handle google log in
   const handleGoogleLogin = () => {
@@ -138,7 +143,7 @@ const Login = () => {
                   Sign up
                 </Link>
               </p>
-              {user && <Navigate to="/" replace={true} />}
+              {user && <Navigate to={from || "/"} replace={true} />}
             </form>
           </div>
         </div>

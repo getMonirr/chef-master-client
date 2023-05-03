@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "react-tooltip/dist/react-tooltip.css";
 import "react-toastify/dist/ReactToastify.css";
-import '@smastrom/react-rating/style.css'
+import "@smastrom/react-rating/style.css";
 import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { routes } from "./routes/routes/Routes.jsx";

@@ -10,6 +10,7 @@ import {
 } from "../../loader/chefsDataLoader";
 import ChefRecipes from "../../pages/ChefRecipes/ChefRecipes";
 import ErrorPage from "../../pages/errorPage/ErrorPage";
+import PrivateRoute from "./privateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "chef/:chef_id",
-        element: <ChefRecipes />,
+        element: (
+          <PrivateRoute>
+            <ChefRecipes />
+          </PrivateRoute>
+        ),
         loader: targetChefLoader,
       },
     ],

@@ -33,7 +33,7 @@ const InstallApp = () => {
         </div>
       </div>
       <div>
-        <LazyLoad height={762} offset={300}>
+        <LazyLoad offset={300}>
           <img src={appDownload} alt="app download" />
         </LazyLoad>
       </div>

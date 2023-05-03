@@ -15,6 +15,8 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
+
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -47,7 +49,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (newUser) => {
       setUser(newUser);
-      console.log("inside on auth");
+      setLoading(false);
     });
     return () => {
       unSubscribe();
@@ -57,6 +59,7 @@ const AuthProvider = ({ children }) => {
   // auth info
   const authInfo = {
     user,
+    loading,
     googleLogin,
     githubLogin,
     createNewUser,
