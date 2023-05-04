@@ -18,7 +18,10 @@ const SingleChef = ({ chef }) => {
   return (
     <div className="card card-compact w-full bg-base-100 shadow-xl">
       <figure>
-        <LazyLoad height={350} offset={300}>
+        <LazyLoad className="lg:hidden" height={200} offset={300}>
+          <img src={chef_picture} alt={chef_name} />
+        </LazyLoad>
+        <LazyLoad className="hidden lg:block" height={350} offset={300}>
           <img src={chef_picture} alt={chef_name} />
         </LazyLoad>
       </figure>
