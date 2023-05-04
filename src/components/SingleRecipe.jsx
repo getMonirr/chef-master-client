@@ -11,23 +11,30 @@ const SingleRecipe = ({ recipe }) => {
     toast.success("Successfully add To favorite");
     setFavBtnDisable(true);
   };
+
   return (
     <div className="card w-full bg-gray-700 shadow-xl text-white">
-      <div className="card-body space-y-6">
+      <div className="card-body space-y-6 justify-between">
         <h2 className="card-title text-orange-400">
           Recipe Name: <span className="text-white">{recipe_name}</span>{" "}
         </h2>
         <div>
           <p>
-            <span className="text-orange-400 text-xl block mb-3">Ingredients:</span>
+            <span className="text-orange-400 text-xl block mb-3">
+              Ingredients:
+            </span>
             {ingredients.map((ingredient, index) => (
-              <li className="mb-2" key={index}>{ingredient}</li>
+              <li className="mb-2" key={index}>
+                {ingredient}
+              </li>
             ))}
           </p>
         </div>
         <div>
           <p>
-            <span className="text-orange-400 text-xl block mb-3">Cooking Method:</span>
+            <span className="text-orange-400 text-xl block mb-3">
+              Cooking Method:
+            </span>
             {cooking_method.map((method, index) => (
               <li className="list-decimal mb-2" key={index}>
                 {method}
@@ -41,7 +48,7 @@ const SingleRecipe = ({ recipe }) => {
             <Rating style={{ maxWidth: 110 }} value={rating} readOnly />
           </div>
         </div>
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-end items-end mt-auto">
           <button
             onClick={handleAddToFavorite}
             className="btn bg-orange-400 border border-orange-300"

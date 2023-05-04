@@ -1,5 +1,5 @@
 import React from "react";
-import { FaBell, FaHamburger } from "react-icons/fa";
+import { FaHamburger } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { SiCodechef } from "react-icons/si";
@@ -14,22 +14,30 @@ const HowItWork = () => {
         <div className="text-center flex flex-col justify-center items-center">
           <IoLocationSharp className="mb-4" size={70} color="#FFAE01" />
           <p className="font-bold text-xl">Select location</p>
-          <p className="font-normal text-lg text-[#9E9E9E]">Choose the location where your food will be delivered.</p>
+          <p className="font-normal text-lg text-[#9E9E9E]">
+            Choose the location where your food will be delivered.
+          </p>
         </div>
         <div className="text-center flex flex-col justify-center items-center">
           <SiCodechef className="mb-4" size={70} color="#FFAE01" />
           <p className="font-bold text-xl">Select Chef</p>
-          <p className="font-normal text-lg text-[#9E9E9E]">Check over hundreds of menus to pick your favorite food.</p>
+          <p className="font-normal text-lg text-[#9E9E9E]">
+            Check over hundreds of menus to pick your favorite food.
+          </p>
         </div>
         <div className="text-center flex flex-col justify-center items-center">
           <HiCurrencyDollar className="mb-4" size={70} color="#FFAE01" />
           <p className="font-bold text-xl">Pay advanced</p>
-          <p className="font-normal text-lg text-[#9E9E9E]">It's quick, safe, and simple. Select several methods of payment.</p>
+          <p className="font-normal text-lg text-[#9E9E9E]">
+            It's quick, safe, and simple. Select several methods of payment.
+          </p>
         </div>
         <div className="text-center flex flex-col justify-center items-center">
           <FaHamburger className="mb-4" size={70} color="#FFAE01" />
           <p className="font-bold text-xl">Enjoy meals</p>
-          <p className="font-normal text-lg text-[#9E9E9E]">Food is made and delivered directly to your home..</p>
+          <p className="font-normal text-lg text-[#9E9E9E]">
+            Food is made and delivered directly to your home..
+          </p>
         </div>
       </div>
     </div>

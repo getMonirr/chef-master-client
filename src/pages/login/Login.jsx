@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SocialLogin from "../../components/SocialLogin";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-toastify";
 
@@ -13,23 +13,17 @@ const Login = () => {
 
   // location
   const location = useLocation();
-  const from = location?.state?.from?.pathname;
-  // console.log(location,from);
+  const from = location?.state?.from?.pathname || "/";
 
   const navigate = useNavigate();
-
-  const handleSingUpNavigate = () => {
-    navigate("/sign-up", { state: { location } });
-  };
 
   // handle google log in
   const handleGoogleLogin = () => {
     setError("");
     googleLogin()
       .then((result) => {
-        const loggedInUser = result.user;
-        console.log(loggedInUser);
         toast.success("login successful");
+        navigate(from);
       })
       .catch((err) => {
         setError(err.message);
@@ -41,8 +35,8 @@ const Login = () => {
     setError("");
     githubLogin()
       .then((result) => {
-        console.log(result.user);
         toast.success("login successful");
+        navigate(from);
       })
       .catch((err) => {
         setError(err.message);
@@ -60,12 +54,11 @@ const Login = () => {
 
     loginWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log(result.user);
         toast.success("login successful");
+        navigate(from);
       })
       .catch((err) => {
         setError(err.message);
-        console.log(err);
       });
   };
   return (
@@ -142,14 +135,13 @@ const Login = () => {
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
-                <span
-                  onClick={handleSingUpNavigate}
+                <Link
+                  to="/sign-up"
                   className="font-medium text-red-400 hover:underline dark:text-primary-500 cursor-pointer"
                 >
                   Sign up
-                </span>
+                </Link>
               </p>
-              {user && <Navigate to={from || "/"} replace={true} />}
             </form>
           </div>
         </div>

@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Registration = () => {
   const [error, setError] = useState("");
-  const { createNewUser, user, setUser } = useAuth();
+  const { createNewUser, logOut } = useAuth();
 
-  const location = useLocation();
-  const from = location?.state?.location?.state?.from?.pathname || "/";
-
-  // update name and photo url
+  const navigate = useNavigate();
 
   // handle handleFormSubmit
   const handleFormSubmit = async (e) => {
@@ -44,9 +42,17 @@ const Registration = () => {
       })
         .then(() => {
           console.log("Profile updated successfully");
-          setUser(loggedUser);
-          // for update header user image and name. without it i cannot update header without reload
-          window.location.reload(true);
+
+          logOut()
+            .then((result) => {
+              console.log("log out successful");
+              toast.success("registration successful");
+
+              navigate("/login");
+            })
+            .catch((err) => {
+              setError(err.message);
+            });
         })
         .catch((err) => {
           setError(err.message);
@@ -146,7 +152,6 @@ const Registration = () => {
                 </Link>
               </p>
             </form>
-            {user && <Navigate to={from} replace />}
           </div>
         </div>
       </div>

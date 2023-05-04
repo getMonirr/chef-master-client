@@ -14,24 +14,25 @@ const SingleChef = ({ chef }) => {
     number_of_recipes,
     years_of_experience,
   } = chef;
+
   return (
     <div className="card card-compact w-full bg-base-100 shadow-xl">
       <figure>
-        <LazyLoad offset={300}>
+        <LazyLoad height={350} offset={300}>
           <img src={chef_picture} alt={chef_name} />
         </LazyLoad>
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{chef_name}</h2>
-        <p className="font-bold flex items-center gap-2 text-2xl">
+        <h2 className="card-title text-2xl">{chef_name}</h2>
+        <p className="font-bold flex items-center gap-2 text-lg">
           {" "}
           <TbChefHat /> Experience: {years_of_experience}
         </p>
-        <p className="font-bold flex items-center gap-2 text-xl text-orange-500">
+        <p className="font-bold flex items-center gap-2 text-lg text-orange-500">
           {" "}
           <IoFastFoodOutline /> Recipes: {number_of_recipes}
         </p>
-        <p className="font-bold flex items-center gap-2 text-xl">
+        <p className="font-bold flex items-center gap-2 text-lg">
           {" "}
           <AiOutlineLike /> Likes: {likes}
         </p>

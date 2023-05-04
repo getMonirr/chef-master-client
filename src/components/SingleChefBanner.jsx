@@ -6,7 +6,6 @@ import LazyLoad from "react-lazy-load";
 
 const SingleChefBanner = ({ chef }) => {
   const {
-    id,
     chef_name,
     chef_picture,
     likes,
@@ -14,7 +13,7 @@ const SingleChefBanner = ({ chef }) => {
     years_of_experience,
     bio,
   } = chef;
-  console.log(chef);
+
   return (
     <>
       <div className=" text-center space-y-3 py-8">
@@ -25,7 +24,7 @@ const SingleChefBanner = ({ chef }) => {
       </div>
       <div className="card lg:card-side bg-base-100 shadow-xl">
         <figure className="w-6/12">
-          <LazyLoad>
+          <LazyLoad height={500}>
             <img src={chef_picture} alt={chef_name} />
           </LazyLoad>
         </figure>

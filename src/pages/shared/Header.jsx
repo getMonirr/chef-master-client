@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 
 const Header = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
+
   const handleLogOut = () => {
     logOut()
       .then((result) => {
@@ -74,17 +74,16 @@ const Header = () => {
               <div className="w-10 rounded-full">
                 <img
                   className={`${user?.displayName && "show-user-name"}`}
-                  src={
-                    user?.photoURL ||
-                    " "
-                  }
+                  src={user?.photoURL || " "}
                 />
               </div>
             </a>
             <LoginButton handleClick={handleLogOut}>LogOut</LoginButton>
           </>
         ) : (
-          <LoginButton>Login</LoginButton>
+          <Link to="/login">
+            <LoginButton>Login</LoginButton>
+          </Link>
         )}
       </div>
       <Tooltip anchorSelect=".show-user-name" place="left">

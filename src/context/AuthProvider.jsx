@@ -19,6 +19,8 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const auth = getAuth(app);
+
+  //provider
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
@@ -36,6 +38,7 @@ const AuthProvider = ({ children }) => {
   const googleLogin = () => {
     return signInWithPopup(auth, googleProvider);
   };
+
   // git hub login
   const githubLogin = () => {
     return signInWithPopup(auth, githubProvider);
@@ -57,11 +60,6 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  // set user name and photo url
-  const setUserNameAndPhotoUrl = (userObj) => {
-    return updateProfile(auth, userObj);
-  };
-
   // auth info
   const authInfo = {
     user,
@@ -71,8 +69,6 @@ const AuthProvider = ({ children }) => {
     createNewUser,
     loginWithEmailAndPassword,
     logOut,
-    setUserNameAndPhotoUrl,
-    setUser,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

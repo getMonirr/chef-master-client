@@ -7,13 +7,9 @@ import ScrollToTop from "../components/ScrollToTop";
 const Main = () => {
   return (
     <div>
-      <div>
-        <ScrollToTop />
-        <Header />
-      </div>
-      <div>
-        <Outlet />
-      </div>
+      <ScrollToTop />
+      <Header />
+      <Outlet />
       <div className="bg-base-200 mx-auto">
         <Footer />
       </div>

@@ -16,7 +16,9 @@ const Hero = () => {
       <div className="flex justify-between items-center min-h-[calc(100vh-300px)] container mx-auto px-5 py-10 gap-4 lg:flex-row flex-col-reverse">
         <div>
           <div className="lg:w-3/6 text-center lg:text-left">
-            <h1 className="mb-5 text-5xl font-bold text-white">WelCome to Chinese Chef</h1>
+            <h1 className="mb-5 text-5xl font-bold text-white">
+              WelCome to Chinese Chef
+            </h1>
             <p className="mb-5">
               Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
