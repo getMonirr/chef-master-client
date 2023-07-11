@@ -5,6 +5,8 @@ import SingleChef from "../../components/SingleChef";
 import { Dna } from "react-loader-spinner";
 import HowItWork from "../../components/HowItWork";
 import InstallApp from "../../components/InstallApp";
+import Booking from "../../components/Booking";
+import ContactUs from "../../components/ContactUs";
 
 const Home = () => {
   // get data
@@ -52,6 +54,8 @@ const Home = () => {
           </div>
         )}
       </div>
+      <Booking />
+      <ContactUs />
       <div>
         <InstallApp />
       </div>
